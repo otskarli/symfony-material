@@ -1,13 +1,13 @@
 <?php
-namespace otskarli\MaterialDesignBundle;
+namespace KarliOts\MaterialDesignBundle;
 
-use otskarli\MaterialDesignBundle\DependencyInjection\Compiler\FormPass;
+use KarliOts\MaterialDesignBundle\DependencyInjection\Compiler\FormPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
  * Class MaterialBundle
- * @package otskarli\MaterialDesignBundle
+ * @package KarliOts\MaterialDesignBundle
  * @author karli.ots@helmes.com
  */
 class MaterialDesignBundle extends Bundle

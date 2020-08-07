@@ -1,6 +1,6 @@
 <?php
 
-namespace otskarli\MaterialDesignBundle\DependencyInjection;
+namespace KarliOts\MaterialDesignBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
@@ -9,7 +9,7 @@ use Symfony\Component\Config\Definition\NodeInterface;
 
 /**
  * Class Configuration
- * @package otskarli\Bundle\FebBundle\DependencyInjection
+ * @package KarliOts\Bundle\FebBundle\DependencyInjection
  * @author Karli Ots <karli.ots@helmes.ee>
  */
 class Configuration implements ConfigurationInterface

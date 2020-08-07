@@ -1,5 +1,5 @@
 <?php
-namespace otskarli\MaterialDesignBundle\DependencyInjection;
+namespace KarliOts\MaterialDesignBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -8,7 +8,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 /**
  * Class MaterialDesignExtension
- * @package otskarli\MaterialDesignBundle\DependencyInjection
+ * @package KarliOts\MaterialDesignBundle\DependencyInjection
  * @author karli.ots@helmes.com
  */
 class MaterialDesignExtension extends Extension

@@ -1,12 +1,12 @@
 <?php
 
-namespace otskarli\MaterialDesignBundle\Form\Extension;
+namespace KarliOts\MaterialDesignBundle\Form\Extension;
 
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 /**
  * Class SubmitFormTypeExtension
- * @package otskarli\Bundle\FebBundle\Form\Extension
+ * @package KarliOts\Bundle\FebBundle\Form\Extension
  * @author Karli Ots <karli.ots@helmes.com>
  */
 class SubmitFormTypeExtension extends ButtonFormTypeExtension

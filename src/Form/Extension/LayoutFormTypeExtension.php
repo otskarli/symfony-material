@@ -1,6 +1,6 @@
 <?php
 
-namespace otskarli\MaterialDesignBundle\Form\Extension;
+namespace KarliOts\MaterialDesignBundle\Form\Extension;
 
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormInterface;
@@ -10,7 +10,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Class LayoutFormTypeExtension
- * @package otskarli\Bundle\FebBundle\Form\Extension
+ * @package KarliOts\Bundle\FebBundle\Form\Extension
  * @author Karli Ots <karli.ots@helmes.com>
  */
 class LayoutFormTypeExtension extends AbstractTypeExtension

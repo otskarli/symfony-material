@@ -19,7 +19,7 @@
   },
   "autoload": {
     "psr-4": {
-      "otskarli\\MaterialDesignBundle\\": "src"
+      "KarliOts\\MaterialDesignBundle\\": "src"
     }
   }
 }

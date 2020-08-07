@@ -1,6 +1,6 @@
 <?php
 
-namespace otskarli\MaterialDesignBundle\DependencyInjection\Compiler;
+namespace KarliOts\MaterialDesignBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

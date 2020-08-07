@@ -27,7 +27,7 @@ material_design:
 ```php
 <?php 
     return [
-        otskarli\MaterialDesignBundle\MaterialDesignBundle::class => ['all' => true],
+        KarliOts\MaterialDesignBundle\MaterialDesignBundle::class => ['all' => true],
     ];
 ?>
 ```
