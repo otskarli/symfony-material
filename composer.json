@@ -1,0 +1,25 @@
+{
+  "name": "otskarli/material-design-bundle",
+  "description": "Material design bundle for symfony",
+  "version": "1.0.0",
+  "keywords": [
+    "material",
+    "design",
+    "material design"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Karli Ots",
+      "email": "karli92ots@hotmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "otskarli\\MaterialDesignBundle\\": "src"
+    }
+  }
+}

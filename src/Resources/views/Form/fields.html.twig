@@ -1,0 +1,207 @@
+{% use 'form_div_layout.html.twig' %}
+
+{%- block form_row -%}
+    {%- set widget_attr = {} -%}
+    {%- if help is not empty -%}
+        {%- set widget_attr = {attr: {'aria-describedby': id ~"_help"}} -%}
+    {%- endif -%}
+
+    {{ form_widget(form, widget_attr) }}
+{%- endblock form_row -%}
+
+{%- block form_widget_simple -%}
+    {%- set attr = { class: 'mdc-text-field__input' }|merge(attr) -%}
+    {%- set type = type|default('text') -%}
+    {%- if type == 'range' or type == 'color' -%}
+        {# Attribute "required" is not supported #}
+        {%- set required = false -%}
+    {%- endif -%}
+
+    {% if type == 'hidden' %}
+        <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+    {% else %}
+        <div class="mdc-form-group">
+            {% if filled %}
+                {# Filled material design#}
+                {% set row_attr = row_attr|merge({class: 'mdc-text-field ' ~ (errors|length > 0 ? 'mdc-text-field--invalid' : '')}) %}
+                <div{% with {attr: row_attr} %}{{ block('attributes') }}{% endwith %}>
+                    <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+                    <div class="mdc-line-ripple"></div>
+                    {{- form_label(form, null, {label_attr:{class: 'mdc-floating-label'}}) -}}
+                </div>
+            {% else %}
+                {# Outlined material design #}
+                {% set row_attr = row_attr|merge({class: 'mdc-text-field mdc-text-field--outlined ' ~ (errors|length > 0 ? 'mdc-text-field--invalid' : '') ~ (leading_icon ? ' mdc-text-field--with-leading-icon' : '') ~ (trailing_icon ? ' mdc-text-field--with-trailing-icon' : '')}) %}
+
+                <div{% with {attr: row_attr} %}{{ block('attributes') }}{% endwith %}>
+                    {% if leading_icon %}
+                        <i class="material-icons mdc-text-field__icon">{{ leading_icon }}</i>
+                    {% endif %}
+                    {% if trailing_icon %}
+                        <i class="material-icons mdc-text-field__icon">{{ trailing_icon }}</i>
+                    {% endif %}
+
+                    <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+                    <div class="mdc-notched-outline">
+                        <div class="mdc-notched-outline__leading"></div>
+                        <div class="mdc-notched-outline__notch">
+                            {{- form_label(form, null, {label_attr:{class: 'mdc-floating-label'}}) -}}
+                        </div>
+                        <div class="mdc-notched-outline__trailing"></div>
+                    </div>
+                </div>
+            {% endif %}
+
+            {% if errors|length > 0 or character_count %}
+                <div class="mdc-text-field-helper-line">
+                    {% if character_count %}
+                        <div class="mdc-text-field-character-counter"></div>
+                    {% endif %}
+                    {% if errors|length > 0 %}
+                        <div class="mdc-text-field-helper-text mdc-text-field-helper-text--persistent mdc-text-field-helper-text--validation-msg" role="alert">
+                            {{ errors[0].message }}
+                        </div>
+                    {% endif %}
+                </div>
+            {% else %}
+                {{- form_help(form) -}}
+            {% endif %}
+        </div>
+    {% endif %}
+{%- endblock form_widget_simple -%}
+
+{%- block textarea_widget -%}
+    {%- set attr = { class: 'mdc-text-field__input' }|merge(attr) -%}
+
+    <div class="mdc-form-group">
+        {% if filled %}
+            {# Filled material design#}
+            {% set row_attr = row_attr|merge({class: 'mdc-text-field mdc-text-field--textarea ' ~ (errors|length > 0 ? 'mdc-text-field--invalid' : '')}) %}
+            <div{% with {attr: row_attr} %}{{ block('attributes') }}{% endwith %}>
+                <textarea {{ block('widget_attributes') }}>{{ value }}</textarea>
+                <div class="mdc-line-ripple"></div>
+                {{- form_label(form, null, {label_attr:{class: 'mdc-floating-label'}}) -}}
+            </div>
+        {% else %}
+            {# Outlined material design #}
+            {% set row_attr = row_attr|merge({class: 'mdc-text-field mdc-text-field--textarea mdc-text-field--outlined ' ~ (errors|length > 0 ? 'mdc-text-field--invalid' : '') ~ (leading_icon ? ' mdc-text-field--with-leading-icon' : '') ~ (trailing_icon ? ' mdc-text-field--with-trailing-icon' : '')}) %}
+
+            <div{% with {attr: row_attr} %}{{ block('attributes') }}{% endwith %}>
+                {% if leading_icon %}
+                    <i class="material-icons mdc-text-field__icon">{{ leading_icon }}</i>
+                {% endif %}
+                {% if trailing_icon %}
+                    <i class="material-icons mdc-text-field__icon">{{ trailing_icon }}</i>
+                {% endif %}
+
+                <textarea {{ block('widget_attributes') }}>{{ value }}</textarea>
+                <div class="mdc-notched-outline">
+                    <div class="mdc-notched-outline__leading"></div>
+                    <div class="mdc-notched-outline__notch">
+                        {{- form_label(form, null, {label_attr:{class: 'mdc-floating-label'}}) -}}
+                    </div>
+                    <div class="mdc-notched-outline__trailing"></div>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if errors|length > 0 or character_count %}
+            <div class="mdc-text-field-helper-line">
+                {% if character_count %}
+                    <div class="mdc-text-field-character-counter"></div>
+                {% endif %}
+                {% if errors|length > 0 %}
+                    <div class="mdc-text-field-helper-text mdc-text-field-helper-text--persistent mdc-text-field-helper-text--validation-msg" role="alert">
+                        {{ errors[0].message }}
+                    </div>
+                {% endif %}
+            </div>
+        {% else %}
+            {{- form_help(form) -}}
+        {% endif %}
+    </div>
+{%- endblock textarea_widget -%}
+
+{%- block button_widget -%}
+    {%- if label is empty -%}
+        {%- if label_format is not empty -%}
+            {% set label = label_format|replace({
+                '%name%': name,
+                '%id%': id,
+            }) %}
+        {%- elseif label is not same as(false) -%}
+            {% set label = name|humanize %}
+        {%- endif -%}
+    {%- endif -%}
+
+    {% set attr = attr|merge({class: 'mdc-button ' ~ (raised ? 'mdc-button--raised ' : '') ~ (outlined ? 'mdc-button--outlined ' : '') ~ (unelevated ? 'mdc-button--unelevated ' : '')}) %}
+    <button type="{{ type|default('button') }}" {{ block('button_attributes') }}>
+        <span class="mdc-button__ripple"></span>
+        {% if leading_icon %} <i class="material-icons mdc-button__icon">{{ leading_icon }}</i> {% endif %}
+        <span class="mdc-button__label">
+            {{ translation_domain is same as(false) or label is same as(false) ? label : label|trans(label_translation_parameters, translation_domain) }}
+        </span>
+        {% if trailing_icon %} <i class="material-icons mdc-button__icon">{{ trailing_icon }}</i> {% endif %}
+    </button>
+{%- endblock button_widget -%}
+
+{%- block checkbox_widget -%}
+    {%- set attr = { class: 'mdc-checkbox__native-control' }|merge(attr) -%}
+
+    <div class="mdc-form-group">
+        <div class="mdc-form-field">
+            <div class="mdc-checkbox">
+                <input type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
+                <div class="mdc-checkbox__background">
+                    <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                        <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+                    </svg>
+                    <div class="mdc-checkbox__mixedmark"></div>
+                </div>
+                <div class="mdc-checkbox__ripple"></div>
+            </div>
+        </div>
+        {{- form_label(form, null) -}}
+    </div>
+{%- endblock checkbox_widget -%}
+
+{%- block radio_widget -%}
+    {%- set attr = { class: 'mdc-radio__native-control' }|merge(attr) -%}
+
+        <div class="mdc-form-group">
+            <div class="mdc-form-field">
+                <div class="mdc-radio">
+                    <input type="radio" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
+                    <div class="mdc-radio__background">
+                        <div class="mdc-radio__outer-circle"></div>
+                        <div class="mdc-radio__inner-circle"></div>
+                    </div>
+                    <div class="mdc-radio__ripple"></div>
+                </div>
+                {{- form_label(form, null) -}}
+            </div>
+        </div>
+{%- endblock radio_widget -%}
+
+{% block form_help -%}
+    {%- if help is not empty -%}
+        {%- set help_attr = help_attr|merge({class: (help_attr.class|default('') ~ ' help-text')|trim}) -%}
+        <div class="mdc-text-field-helper-line">
+            <div class="mdc-text-field-helper-text mdc-text-field-helper-text--persistent">
+                {%- if translation_domain is same as(false) -%}
+                    {%- if help_html is same as(false) -%}
+                        {{- help -}}
+                    {%- else -%}
+                        {{- help|raw -}}
+                    {%- endif -%}
+                {%- else -%}
+                    {%- if help_html is same as(false) -%}
+                        {{- help|trans(help_translation_parameters, translation_domain) -}}
+                    {%- else -%}
+                        {{- help|trans(help_translation_parameters, translation_domain)|raw -}}
+                    {%- endif -%}
+                {%- endif -%}
+            </div>
+        </div>
+    {%- endif -%}
+{%- endblock form_help %}

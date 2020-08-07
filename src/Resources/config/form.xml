@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+    <parameters>
+        <parameter key="symfony_material.form.extension.layout.class">otskarli\MaterialDesignBundle\Form\Extension\LayoutFormTypeExtension</parameter>
+        <parameter key="symfony_material.form.extension.submit.class">otskarli\MaterialDesignBundle\Form\Extension\SubmitFormTypeExtension</parameter>
+        <parameter key="symfony_material.form.extension.button.class">otskarli\MaterialDesignBundle\Form\Extension\ButtonFormTypeExtension</parameter>
+    </parameters>
+
+    <services>
+        <service id="symfony_material.form.extension.horizontal" class="%symfony_material.form.extension.layout.class%">
+            <tag name="form.type_extension" alias="form" extended-type="Symfony\Component\Form\Extension\Core\Type\FormType" />
+        </service>
+
+        <service id="symfony_material.form.extension.submit" class="%symfony_material.form.extension.submit.class%">
+            <tag name="form.type_extension" alias="form" extended-type="Symfony\Component\Form\Extension\Core\Type\SubmitType" />
+        </service>
+
+        <service id="symfony_material.form.extension.button" class="%symfony_material.form.extension.button.class%">
+            <tag name="form.type_extension" alias="form" extended-type="Symfony\Component\Form\Extension\Core\Type\ButtonType" />
+        </service>
+    </services>
+</container>

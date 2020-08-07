@@ -1,0 +1,11 @@
+.mdc-text-field--fullwidth {
+  &:not(.mdc-text-field--textarea) {
+    display: inline-flex;
+  }
+
+  input {
+    &.mdc-text-field__input {
+      padding: 12px 16px 14px!important;
+    }
+  }
+}

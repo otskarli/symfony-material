@@ -1,0 +1,18 @@
+.mdc-form-field + label {
+  font-family: Roboto,sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-size: .875rem;
+  line-height: 1.25rem;
+  font-weight: 400;
+  letter-spacing: .0178571429em;
+  text-decoration: inherit;
+  text-transform: inherit;
+  color: rgba(0,0,0,.87);
+  color: var(--mdc-theme-text-primary-on-background,rgba(0,0,0,.87));
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-align: center;
+  align-items: center;
+  vertical-align: middle;
+}
