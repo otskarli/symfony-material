@@ -205,3 +205,123 @@
         </div>
     {%- endif -%}
 {%- endblock form_help %}
+
+{%- block choice_widget_collapsed -%}
+    {%- if required and placeholder is none and not placeholder_in_choices and not multiple and (attr.size is not defined or attr.size <= 1) -%}
+        {% set required = false %}
+    {%- endif -%}
+    <div class="mdc-form-group">
+        {% set row_attr = row_attr|merge({class: 'mdc-select mdc-select--outlined ' ~ (errors|length > 0 ? 'mdc-text-field--invalid' : '') }) %}
+
+        <div{% with {attr: row_attr} %}{{ block('attributes') }}{% endwith %}>
+            <select style="display: none" {{ block('widget_attributes') }}{% if multiple %} multiple="multiple"{% endif %}>
+                {%- if placeholder is not none -%}
+                    <option value=""{% if required and value is empty %} selected="selected"{% endif %}>{{ placeholder != '' ? (translation_domain is same as(false) ? placeholder : placeholder|trans({}, translation_domain)) }}</option>
+                {%- endif -%}
+                {%- if preferred_choices|length > 0 -%}
+                    {% set options = preferred_choices %}
+                    {% set render_preferred_choices = true %}
+                    {{- block('choice_widget_options') -}}
+                    {%- if choices|length > 0 and separator is not none -%}
+                        <option disabled="disabled">{{ separator }}</option>
+                    {%- endif -%}
+                {%- endif -%}
+                {%- set options = choices -%}
+                {%- set render_preferred_choices = false -%}
+                {% for group_label, choice in options %}
+                    <option value="{{ choice.value }}"{% if choice.attr %}{% with { attr: choice.attr } %}{{ block('attributes') }}{% endwith %}{% endif %}{% if not render_preferred_choices|default(false) and choice is selectedchoice(value) %} selected="selected"{% endif %}>{{ choice_translation_domain is same as(false) ? choice.label : choice.label|trans({}, choice_translation_domain) }}</option>
+                {% endfor %}
+            </select>
+
+            <div class="mdc-select__anchor" aria-labelledby="outlined-select-label">
+                <span class="mdc-select__ripple"></span>
+                <span class="mdc-select__selected-text">
+                    {{ value }}
+                </span>
+                <span class="mdc-select__dropdown-icon"></span>
+                <span class="mdc-notched-outline">
+                    <span class="mdc-notched-outline__leading"></span>
+                    <span class="mdc-notched-outline__notch">
+                        <span id="outlined-select-label" class="mdc-floating-label">
+                            {{- form_label(form, null, {translation_domain: choice_translation_domain}) -}}
+                        </span>
+                    </span>
+                    <span class="mdc-notched-outline__trailing"></span>
+                </span>
+            </div>
+
+            <div class="mdc-select__menu mdc-menu mdc-menu-surface" role="listbox">
+                <ul class="mdc-list">
+                    {%- set options = choices -%}
+                    {%- set render_preferred_choices = false -%}
+                    {{- block('choice_widget_options') -}}
+                </ul>
+            </div>
+        </div>
+
+        {% if errors|length > 0 or character_count %}
+            <div class="mdc-text-field-helper-line">
+                {% if character_count %}
+                    <div class="mdc-text-field-character-counter"></div>
+                {% endif %}
+                {% if errors|length > 0 %}
+                    <div class="mdc-text-field-helper-text mdc-text-field-helper-text--persistent mdc-text-field-helper-text--validation-msg" role="alert">
+                        {{ errors[0].message }}
+                    </div>
+                {% endif %}
+            </div>
+        {% else %}
+            {{- form_help(form) -}}
+        {% endif %}
+    </div>
+{%- endblock choice_widget_collapsed -%}
+
+{%- block choice_widget_options -%}
+    {%- if placeholder is same as(true) -%}
+        <li class="mdc-list-item {% if required and value is empty %}mdc-list-item--selected{% endif %}" data-value=""><span class="mdc-list-item__text"></span></li>
+    {%- endif -%}
+
+    {% for group_label, choice in options %}
+        <li class="mdc-list-item {% if not render_preferred_choices|default(false) and choice is selectedchoice(value) %} mdc-list-item--selected{% endif %}" data-value="{{ choice.value }}" role="option" {% if not render_preferred_choices|default(false) and choice is selectedchoice(value) %} aria-selected="true"{% endif %}>
+            <span class="mdc-list-item__text">
+                {{ choice_translation_domain is same as(false) ? choice.label : choice.label|trans({}, choice_translation_domain) }}
+            </span>
+        </li>
+    {% endfor %}
+{%- endblock choice_widget_options -%}
+
+{%- block choice_widget_expanded -%}
+    <div {{ block('widget_container_attributes') }}>
+        {%- for child in form %}
+            {{- form_widget(child) -}}
+        {% endfor -%}
+    </div>
+{%- endblock choice_widget_expanded -%}
+
+{%- block form_label -%}
+    {% if label is not same as(false) -%}
+        {% if not compound -%}
+            {% set label_attr = label_attr|merge({'for': id}) %}
+        {%- endif -%}
+        {% if required -%}
+            {% set label_attr = label_attr|merge({'class': (label_attr.class|default('') ~ ' required')|trim}) %}
+        {%- endif -%}
+        {% if label is empty -%}
+            {%- if label_format is not empty -%}
+                {% set label = label_format|replace({
+                    '%name%': name,
+                    '%id%': id,
+                }) %}
+            {%- else -%}
+                {% set label = name|humanize %}
+            {%- endif -%}
+        {%- endif -%}
+        <{{ element|default('label') }}{% if label_attr %}{% with { attr: label_attr } %}{{ block('attributes') }}{% endwith %}{% endif %}>
+        {%- if translation_domain is same as(false) -%}
+            {{- label -}}
+        {%- else -%}
+            {{- label|trans(label_translation_parameters, translation_domain)|raw -}}
+        {%- endif -%}
+        </{{ element|default('label') }}>
+    {%- endif -%}
+{%- endblock form_label -%}
