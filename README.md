@@ -1,4 +1,4 @@
-#Alpha release
+# Symfony 5 material.io
 
 # DO NOT REPORT ISSUES RIGHT NOW
 WORK IN PROGRESS!!!!
@@ -7,7 +7,7 @@ WORK IN PROGRESS!!!!
 Material.io support for symfony projects
 
 ## packagist
-- comes later, refer to INSTALL.md
+otskarli/symfony-material
 
 ### supported components
 1. Input

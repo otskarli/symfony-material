@@ -5,14 +5,7 @@
 {
     "require": {
         "otskarli/symfony-material": "dev-master"
-    },
-    
-    "repositories": [
-        {
-          "type": "git",
-          "url": "git@github.com:otskarli/symfony-material.git"
-        }
-    ]
+    }
 }
 ```
 
