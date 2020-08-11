@@ -7,7 +7,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 /**
  * Class SubmitFormTypeExtension
  * @package KarliOts\Bundle\FebBundle\Form\Extension
- * @author Karli Ots <karli.ots@helmes.com>
+ * @author Karli Ots <karli92ots@hotmail.com>
  */
 class SubmitFormTypeExtension extends ButtonFormTypeExtension
 {

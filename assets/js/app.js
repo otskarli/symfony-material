@@ -20,17 +20,15 @@ import {MDCDataTable} from '@material/data-table';
 import {MDCMenuSurface} from '@material/menu-surface';
 
 class MaterialDesign {
-    init (context = document) {
+    static init (context = document) {
         MaterialDesign.initFormComponents(context);
 
-        if (context.getElementById('app-bar')) {
-            const topAppBar = MDCTopAppBar.attachTo(context.getElementById('app-bar'));
-            const drawer = MDCDrawer.attachTo(context.querySelector('.mdc-drawer'))
+        const topAppBar = MDCTopAppBar.attachTo(context.querySelector('.mdc-top-app-bar'));
+        const drawer = MDCDrawer.attachTo(context.querySelector('.mdc-drawer'))
             topAppBar.setScrollTarget(context.getElementById('main-content'));
             topAppBar.listen('MDCTopAppBar:nav', () => {
                 drawer.open = !drawer.open;
             });
-        }
 
         [].forEach.call(context.querySelectorAll('.mdc-tab-bar'), function(EL) {
             MDCTabBar.attachTo(EL);

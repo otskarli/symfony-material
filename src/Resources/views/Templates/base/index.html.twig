@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="{% block html_lang %}en{% endblock %}">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+
+        {% block material_head_styles %}
+            {{ encore_entry_link_tags('css/app') }}
+        {% endblock %}
+        {% block material_head_fonts %}
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        {% endblock %}
+        {% block material_head_scripts %}
+
+        {% endblock %}
+    </head>
+    <body>
+        {% block body %}
+            {{ drawer() }}
+
+            {% block container %}
+                <div class="mdc-drawer-app-content">
+                    {% block container_header %}
+                        <header class="mdc-top-app-bar mdc-top-app-bar--dense">
+                            <div class="mdc-top-app-bar__row">
+                                <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+                                    <button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button" aria-label="Open navigation menu">menu</button>
+                                    <span class="mdc-top-app-bar__title">Symfony 5 material.io front-end bundle</span>
+                                </section>
+                                <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
+                                    <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Favorite">favorite</button>
+                                    <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Search">search</button>
+                                    <button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Options">more_vert</button>
+                                </section>
+                            </div>
+                        </header>
+                    {% endblock %}
+
+                    <main class="main-content" id="main-content">
+                        <div class="mdc-top-app-bar--fixed-adjust">
+                            {% block content %}{% endblock %}
+                        </div>
+                    </main>
+                </div>
+            {% endblock %}
+        {% endblock %}
+
+        {% block material_footer_styles %}{% endblock %}
+        {% block material_footer_fonts %}{% endblock %}
+        {% block material_footer_scripts %}
+            {{ encore_entry_script_tags('js/app') }}
+        {% endblock %}
+    </body>
+</html>

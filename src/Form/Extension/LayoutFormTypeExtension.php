@@ -11,7 +11,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 /**
  * Class LayoutFormTypeExtension
  * @package KarliOts\Bundle\FebBundle\Form\Extension
- * @author Karli Ots <karli.ots@helmes.com>
+ * @author Karli Ots <karli92ots@hotmail.com>
  */
 class LayoutFormTypeExtension extends AbstractTypeExtension
 {

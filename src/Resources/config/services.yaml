@@ -1,0 +1,18 @@
+parameters:
+  symfony_material.twig.extension.menu.class: KarliOts\MaterialDesignBundle\Twig\Menu\MenuExtension
+  symfony_material.form.extension.layout.class: KarliOts\MaterialDesignBundle\Form\Extension\LayoutFormTypeExtension
+  symfony_material.form.extension.submit.class: KarliOts\MaterialDesignBundle\Form\Extension\SubmitFormTypeExtension
+  symfony_material.form.extension.button.class: KarliOts\MaterialDesignBundle\Form\Extension\ButtonFormTypeExtension
+services:
+  symfony_material.twig_extension.menu:
+    class: '%symfony_material.twig.extension.menu.class%'
+    tags: ['twig.extension']
+  symfony_material.form.extension.layout:
+    class : '%symfony_material.form.extension.layout.class%'
+    tags: ['form.type_extension']
+  symfony_material.form.extension.submit:
+    class : '%symfony_material.form.extension.submit.class%'
+    tags: ['form.type_extension']
+  symfony_material.form.extension.button:
+    class : '%symfony_material.form.extension.button.class%'
+    tags: ['form.type_extension']

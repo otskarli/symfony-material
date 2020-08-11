@@ -8,7 +8,7 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 /**
  * Class MaterialBundle
  * @package KarliOts\MaterialDesignBundle
- * @author karli.ots@helmes.com
+ * @author karli92ots@hotmail.com
  */
 class MaterialDesignBundle extends Bundle
 {

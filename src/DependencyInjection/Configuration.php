@@ -10,7 +10,7 @@ use Symfony\Component\Config\Definition\NodeInterface;
 /**
  * Class Configuration
  * @package KarliOts\Bundle\FebBundle\DependencyInjection
- * @author Karli Ots <karli.ots@helmes.ee>
+ * @author Karli Ots <karli92ots@hotmail.com>
  */
 class Configuration implements ConfigurationInterface
 {
@@ -29,14 +29,6 @@ class Configuration implements ConfigurationInterface
                     ->children()
                         ->scalarNode('base_template')
                             ->defaultValue("@MaterialDesign/Form/fields.html.twig")
-                        ->end()
-                        ->enumNode('layout')
-                            ->info('Default form layout')
-                            ->values(['inline', 'horizontal', null])
-                            ->defaultValue('horizontal')
-                        ->end()
-                        ->scalarNode('horizontal_input_wrapper_class')
-                            ->defaultValue("col-9")
                         ->end()
                     ->end()
                 ->end()

@@ -6,7 +6,7 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
- * @author Karli Ots <karli.ots@helmes.com>
+ * @author Karli Ots <karli92ots@hotmail.com>
  */
 class FormPass implements CompilerPassInterface
 {

@@ -1,15 +1,16 @@
 <?php
 namespace KarliOts\MaterialDesignBundle\DependencyInjection;
 
-use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
+use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+use Symfony\Component\DependencyInjection\Loader;
+
 
 /**
  * Class MaterialDesignExtension
  * @package KarliOts\MaterialDesignBundle\DependencyInjection
- * @author karli.ots@helmes.com
+ * @author karli92ots@hotmail.com
  */
 class MaterialDesignExtension extends Extension
 {
@@ -19,38 +20,17 @@ class MaterialDesignExtension extends Extension
      */
     public function load(array $configs, ContainerBuilder $container)
     {
-        $configuration = new Configuration();
-        $config = $this->processConfiguration($configuration, $configs);
-
-        $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-
-        if (isset($config['form'])) {
-            $loader->load('form.xml');
-
-            foreach ($config['form'] as $key => $value) {
-                if (is_array($value)) {
-                    $this->remapParameters($container, 'symfony_material.form.'.$key, $config['form'][$key]);
-                } else {
-                    $container->setParameter(
-                        'symfony_material.form.'.$key,
-                        $value
-                    );
-                }
-            }
-        }
+        $this->loadServices($configs, $container);
     }
 
-    /**
-     * Remap parameters.
-     *
-     * @param ContainerBuilder $container
-     * @param string           $prefix
-     * @param array            $config
-     */
-    private function remapParameters(ContainerBuilder $container, $prefix, array $config)
-    {
-        foreach ($config as $key => $value) {
-            $container->setParameter(sprintf('%s.%s', $prefix, $key), $value);
+    private function loadServices (array $configs, ContainerBuilder $container) {
+        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader->load('services.yaml');
+
+        $configuration = new Configuration();
+        $config = $this->processConfiguration($configuration, $configs);
+        foreach ($config['form'] as $key => $value) {
+            $container->setParameter('symfony_material.form.'.$key, $value);
         }
     }
 }

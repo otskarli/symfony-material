@@ -11,7 +11,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 /**
  * Class ButtonFormTypeExtension
  * @package KarliOts\Bundle\FebBundle\Form\Extension
- * @author Karli Ots <karli.ots@helmes.com>
+ * @author Karli Ots <karli92ots@hotmail.com>
  */
 class ButtonFormTypeExtension extends AbstractTypeExtension
 {
