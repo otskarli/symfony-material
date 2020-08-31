@@ -1,11 +1,9 @@
 <?php
 
-namespace KarliOts\MaterialDesignBundle\DependencyInjection;
+namespace KarliOts\SymfonyMaterialBundle\DependencyInjection;
 
-use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
-use Symfony\Component\Config\Definition\NodeInterface;
 
 /**
  * Class Configuration
@@ -17,21 +15,25 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder('symfony_material');
-        $this->addFormConfig($treeBuilder->getRootNode());
-        return $treeBuilder;
-    }
 
-    protected function addFormConfig(ArrayNodeDefinition $rootNode)
-    {
-        $rootNode
+        $treeBuilder->getRootNode()
             ->children()
                 ->arrayNode('form')
                     ->children()
                         ->scalarNode('base_template')
-                            ->defaultValue("@MaterialDesign/Form/fields.html.twig")
+                            ->defaultValue("@SymfonyMaterial/Form/fields.html.twig")
+                        ->end()
+                    ->end()
+                ->end()
+                ->arrayNode('menu')
+                    ->children()
+                        ->scalarNode('drawer_template')
+                            ->defaultValue("@SymfonyMaterial/Templates/menu/drawer.html.twig")
                         ->end()
                     ->end()
                 ->end()
             ->end();
+
+        return $treeBuilder;
     }
 }

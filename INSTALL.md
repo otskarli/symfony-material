@@ -13,14 +13,14 @@
 ```yaml
 material_design:
   form:
-    base_template: "@MaterialDesign/Form/fields.html.twig"
+    base_template: "@SymfonyMaterial/Form/fields.html.twig"
 ```
 
 ### config\bundles.php
 ```php
 <?php 
     return [
-        KarliOts\MaterialDesignBundle\MaterialDesignBundle::class => ['all' => true],
+        KarliOts\SymfonyMaterialBundle\SymfonyMaterialBundle::class => ['all' => true],
     ];
 ?>
 ```

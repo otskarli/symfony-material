@@ -1,16 +1,17 @@
 <?php
-namespace KarliOts\MaterialDesignBundle;
+namespace KarliOts\SymfonyMaterialBundle;
 
-use KarliOts\MaterialDesignBundle\DependencyInjection\Compiler\FormPass;
+use KarliOts\SymfonyMaterialBundle\DependencyInjection\Compiler\FormPass;
+use KarliOts\SymfonyMaterialBundle\DependencyInjection\SymfonyMaterialExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * Class MaterialBundle
- * @package KarliOts\MaterialDesignBundle
+ * Class SymfonyMaterialBundle
+ * @package KarliOts\SymfonyMaterialBundle
  * @author karli92ots@hotmail.com
  */
-class MaterialDesignBundle extends Bundle
+class SymfonyMaterialBundle extends Bundle
 {
     public function build(ContainerBuilder $container)
     {

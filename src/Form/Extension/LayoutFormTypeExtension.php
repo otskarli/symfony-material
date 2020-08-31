@@ -1,6 +1,6 @@
 <?php
 
-namespace KarliOts\MaterialDesignBundle\Form\Extension;
+namespace KarliOts\SymfonyMaterialBundle\Form\Extension;
 
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormInterface;
