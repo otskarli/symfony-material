@@ -11,7 +11,7 @@
         <div class="mdc-form-group">
             {% set row_attr = row_attr|merge({
                 class: 'mdc-text-field '
-                    ~ (outlined is same as(true) ? ' mdc-text-field--outlined' : '')
+                    ~ (outlined is same as(true) ? ' mdc-text-field--outlined' : ' mdc-text-field--filled')
                     ~ (errors|length > 0 ? ' mdc-text-field--invalid' : '')
                     ~ (leading_icon ? ' mdc-text-field--with-leading-icon' : '')
                     ~ (trailing_icon ? ' mdc-text-field--with-trailing-icon' : '')
@@ -19,17 +19,18 @@
                     ~ (disabled is same as(true) ? ' mdc-text-field--disabled' : '')
             }) %}
 
-            <div{% with {attr: row_attr} %}{{ block('attributes') }}{% endwith %}>
+            <label{% with {attr: row_attr} %}{{ block('attributes') }}{% endwith %}>
                 {% if leading_icon %}
-                    <i class="material-icons mdc-text-field__icon">{{ leading_icon }}</i>
-                {% endif %}
-                {% if trailing_icon %}
-                    <i class="material-icons mdc-text-field__icon">{{ trailing_icon }}</i>
+                    <i class="material-icons mdc-text-field__icon mdc-text-field__icon--leading">{{ leading_icon }}</i>
                 {% endif %}
                 <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+                {% if trailing_icon %}
+                    <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing">{{ trailing_icon }}</i>
+                {% endif %}
+
                 {% if outlined is same as(false) %}
-                    <div class="mdc-line-ripple"></div>
                     {{- form_label(form, null, {label_attr:{class: 'mdc-floating-label'}}) -}}
+                    <div class="mdc-line-ripple"></div>
                 {% else %}
                     <div class="mdc-notched-outline">
                         <div class="mdc-notched-outline__leading"></div>
@@ -39,7 +40,7 @@
                         <div class="mdc-notched-outline__trailing"></div>
                     </div>
                 {% endif %}
-            </div>
+            </label>
 
             {% if errors|length > 0 or character_count or help %}
                 <div class="mdc-text-field-helper-line">

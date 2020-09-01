@@ -45,33 +45,6 @@ class TextareaTypeExample extends AbstractType
                 'help' => 'Will be filled',
                 'outlined' => false,
             ])
-//            ->add('leadingIcon0', TextareaType::class, [
-//                'label' => 'Filled input with leading icon',
-//                'leading_icon' => 'visibility',
-//                'outlined' => false
-//            ])
-//            ->add('trailingIcon0', TextareaType::class, [
-//                'label' => 'Filled input with leading icon',
-//                'trailing_icon' => 'visibility',
-//                'outlined' => false
-//            ])
-//            ->add('leadingTrailingIcon0', TextareaType::class, [
-//                'label' => 'Filled input with leading and trailing icon',
-//                'trailing_icon' => 'visibility',
-//                'leading_icon' => 'visibility',
-//                'outlined' => false
-//            ])
-//            ->add('leadingTrailingIconCharCount0', TextareaType::class, [
-//                'label' => 'Filled input with leading and trailing icon and character count and help text',
-//                'trailing_icon' => 'visibility',
-//                'leading_icon' => 'visibility',
-//                'outlined' => false,
-//                'character_count' => true,
-//                'attr' => [
-//                    'maxLength' => 55,
-//                ],
-//                'help' => 'asd'
-//            ])
             ->add('input35', TextareaType::class, [
                 'label' => 'Outlined required empty input',
             ])
@@ -100,29 +73,6 @@ class TextareaTypeExample extends AbstractType
                 'label' => 'Outlined required empty input with helptext',
                 'help' => 'Will be filled',
             ])
-//            ->add('leadingIcon71', TextareaType::class, [
-//                'label' => 'Filled input with leading icon',
-//                'leading_icon' => 'visibility',
-//            ])
-//            ->add('trailingIcon72', TextareaType::class, [
-//                'label' => 'Filled input with leading icon',
-//                'trailing_icon' => 'visibility',
-//            ])
-//            ->add('leadingTrailingIcon73', TextareaType::class, [
-//                'label' => 'Filled input with leading and trailing icon',
-//                'trailing_icon' => 'visibility',
-//                'leading_icon' => 'visibility',
-//            ])
-//            ->add('leadingTrailingIconCharCount74', TextareaType::class, [
-//                'label' => 'Filled input with leading and trailing icon and character count and help text',
-//                'trailing_icon' => 'visibility',
-//                'leading_icon' => 'visibility',
-//                'character_count' => true,
-//                'attr' => [
-//                    'maxLength' => 55,
-//                ],
-//                'help' => 'asd'
-//            ]);
         ;
     }
 }

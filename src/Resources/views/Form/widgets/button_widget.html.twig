@@ -1,0 +1,27 @@
+{%- block button_widget -%}
+    {%- if label is empty -%}
+        {%- if label_format is not empty -%}
+            {% set label = label_format|replace({
+                '%name%': name,
+                '%id%': id,
+            }) %}
+        {%- elseif label is not same as(false) -%}
+            {% set label = name|humanize %}
+        {%- endif -%}
+    {%- endif -%}
+
+    {% set attr = attr|merge({
+        class: 'mdc-button '
+            ~ (raised ? 'mdc-button--raised ' : '')
+            ~ (outlined ? 'mdc-button--outlined ' : '')
+            ~ (unelevated ? 'mdc-button--unelevated ' : '')
+    }) %}
+    <button type="{{ type|default('button') }}" {{ block('button_attributes') }}>
+        <span class="mdc-button__ripple"></span>
+        {% if leading_icon %} <i class="material-icons mdc-button__icon">{{ leading_icon }}</i> {% endif %}
+        <span class="mdc-button__label">
+            {{ translation_domain is same as(false) or label is same as(false) ? label : label|trans(label_translation_parameters, translation_domain) }}
+        </span>
+        {% if trailing_icon %} <i class="material-icons mdc-button__icon">{{ trailing_icon }}</i> {% endif %}
+    </button>
+{%- endblock button_widget -%}

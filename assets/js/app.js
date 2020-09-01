@@ -18,6 +18,7 @@ import {MDCTextFieldHelperText} from '@material/textfield/helper-text';
 import {MDCTopAppBar} from '@material/top-app-bar';
 import {MDCDataTable} from '@material/data-table';
 import {MDCMenuSurface} from '@material/menu-surface';
+import {MDCTextFieldIcon} from '@material/textfield/icon';
 
 class MaterialDesign {
     static init (context = document) {
@@ -55,6 +56,10 @@ class MaterialDesign {
 
         [].forEach.call(context.querySelectorAll('.mdc-radio'), function(EL) {
             MDCRadio.attachTo(EL);
+        });
+
+        [].forEach.call(context.querySelectorAll('.mdc-text-field-icon'), function(EL) {
+            MDCTextFieldIcon.attachTo(EL);
         });
 
         [].forEach.call(context.querySelectorAll('.mdc-select'), function(EL) {

@@ -24,7 +24,9 @@ class LayoutFormTypeExtension extends AbstractTypeExtension
             'outlined' => $options['outlined'],
             'leading_icon' => $options['leading_icon'],
             'trailing_icon' => $options['trailing_icon'],
-            'character_count' => $options['character_count']
+            'character_count' => $options['character_count'],
+            'prefix' => $options['prefix'],
+            'suffix' => $options['suffix']
         ));
     }
 
@@ -37,7 +39,9 @@ class LayoutFormTypeExtension extends AbstractTypeExtension
             'outlined' => true,
             'leading_icon' => false,
             'trailing_icon' => false,
-            'character_count' => false
+            'character_count' => false,
+            'prefix' => null,
+            'suffix' => null
         ));
     }
 
