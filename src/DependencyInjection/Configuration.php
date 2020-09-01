@@ -14,26 +14,6 @@ class Configuration implements ConfigurationInterface
 {
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder('symfony_material');
-
-        $treeBuilder->getRootNode()
-            ->children()
-                ->arrayNode('form')
-                    ->children()
-                        ->scalarNode('base_template')
-                            ->defaultValue("@SymfonyMaterial/Form/fields.html.twig")
-                        ->end()
-                    ->end()
-                ->end()
-                ->arrayNode('menu')
-                    ->children()
-                        ->scalarNode('drawer_template')
-                            ->defaultValue("@SymfonyMaterial/Templates/menu/drawer.html.twig")
-                        ->end()
-                    ->end()
-                ->end()
-            ->end();
-
-        return $treeBuilder;
+        return new TreeBuilder('symfony_material');
     }
 }

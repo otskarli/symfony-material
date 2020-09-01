@@ -1,4 +1,5 @@
 <?php
+
 namespace KarliOts\SymfonyMaterialBundle\DependencyInjection;
 
 use KarliOts\SymfonyMaterialBundle\Templating\TemplateProvider;
@@ -24,7 +25,7 @@ class SymfonyMaterialExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yaml');
 
         $container->setParameter('symfony_material.form.base_template', TemplateProvider::getTemplateForView(TemplateProvider::TEMPLATE_TWIG_BASE));

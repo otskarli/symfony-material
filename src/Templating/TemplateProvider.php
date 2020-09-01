@@ -1,4 +1,5 @@
 <?php
+
 namespace KarliOts\SymfonyMaterialBundle\Templating;
 
 /**
@@ -23,11 +24,21 @@ class TemplateProvider
         self::TEMPLATE_EXTENSION_MENU_DRAWER => "@SymfonyMaterial/Templates/menu/drawer.html.twig"
     ];
 
-    public static function getTemplateForView (string $templateCode) {
+    /**
+     * @param string $templateCode
+     * @return string Bundle name of twig template
+     */
+    public static function getTemplateForView(string $templateCode)
+    {
         return self::$viewTemplates[$templateCode];
     }
 
-    public static function getTemplateForExtension (string $templateCode) {
+    /**
+     * @param string $templateCode
+     * @return string Bundle name of twig template
+     */
+    public static function getTemplateForExtension(string $templateCode)
+    {
         return self::$extensionTemplates[$templateCode];
     }
 }
