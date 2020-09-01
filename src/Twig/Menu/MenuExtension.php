@@ -1,6 +1,7 @@
 <?php
 namespace KarliOts\SymfonyMaterialBundle\Twig\Menu;
 
+use KarliOts\SymfonyMaterialBundle\Templating\TemplateProvider;
 use Twig\Environment;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
@@ -34,6 +35,6 @@ class MenuExtension extends AbstractExtension implements ExtensionInterface
      * @throws SyntaxError
      */
     public function drawerMenu (Environment $environment) {
-        return $environment->render('@SymfonyMaterial/Templates/menu/drawer.html.twig');
+        return $environment->render(TemplateProvider::getTemplateForExtension(TemplateProvider::TEMPLATE_EXTENSION_MENU_DRAWER));
     }
 }

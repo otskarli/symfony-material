@@ -1,6 +1,7 @@
 <?php
 namespace KarliOts\SymfonyMaterialBundle\DependencyInjection;
 
+use KarliOts\SymfonyMaterialBundle\Templating\TemplateProvider;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
@@ -26,16 +27,6 @@ class SymfonyMaterialExtension extends Extension
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yaml');
 
-        if (!isset($config['form'])) {
-            $container->setParameter('symfony_material.form.base_template', "@SymfonyMaterial/Form/fields.html.twig");
-        } else {
-            foreach ($config['form'] as $key => $value) {
-                $container->setParameter('symfony_material.form.'.$key, $value);
-            }
-        }
-
-//        foreach ($config['menu'] as $key => $value) {
-//            $container->setParameter('symfony_material.menu.'.$key, $value);
-//        }
+        $container->setParameter('symfony_material.form.base_template', TemplateProvider::getTemplateForView(TemplateProvider::TEMPLATE_TWIG_BASE));
     }
 }
