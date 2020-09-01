@@ -7,8 +7,8 @@
 
     <div class="mdc-form-group">
         {% set row_attr = row_attr|merge({
-            class: 'mdc-text-field mdc-text-field--filled mdc-text-field--textarea'
-            ~ (outlined is same as(true) ? ' mdc-text-field--outlined' : '')
+            class: 'mdc-text-field mdc-text-field--textarea'
+            ~ (outlined is same as(true) ? ' mdc-text-field--outlined' : ' mdc-text-field--filled')
             ~ (errors|length > 0 ? ' mdc-text-field--invalid' : '')
             ~ (leading_icon ? ' mdc-text-field--with-leading-icon' : '')
             ~ (trailing_icon ? ' mdc-text-field--with-trailing-icon' : '')
@@ -25,7 +25,6 @@
             {% endif %}
             <span class="mdc-text-field__ripple"></span>
             <textarea {{ block('widget_attributes') }}>{{ value }}</textarea>
-            <span class="mdc-line-ripple"></span>
 
             {% if outlined is same as(false) %}
                 <div class="mdc-line-ripple"></div>
