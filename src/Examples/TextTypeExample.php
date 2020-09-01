@@ -127,6 +127,18 @@ class TextTypeExample extends AbstractType
                     'maxLength' => 55,
                 ],
                 'help' => 'asd'
+            ])
+            ->add('leadingTrailingIconCharCount74', TextType::class, [
+                'label' => 'Filled input with leading and trailing icon and character count and help text and prefix and suffix',
+                'trailing_icon' => 'visibility',
+                'leading_icon' => 'visibility',
+                'character_count' => true,
+                'attr' => [
+                    'maxLength' => 55,
+                ],
+                'help' => 'asd',
+                'prefix' => 'prefix-',
+                'suffix' => '-suffix'
             ]);
     }
 }

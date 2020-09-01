@@ -40,8 +40,8 @@ class LayoutFormTypeExtension extends AbstractTypeExtension
             'leading_icon' => false,
             'trailing_icon' => false,
             'character_count' => false,
-            'prefix' => null,
-            'suffix' => null
+            'prefix' => false,
+            'suffix' => false
         ));
     }
 

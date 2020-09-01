@@ -23,7 +23,13 @@
                 {% if leading_icon %}
                     <i class="material-icons mdc-text-field__icon mdc-text-field__icon--leading">{{ leading_icon }}</i>
                 {% endif %}
+                {% if prefix is not same as(false) %}
+                    <span class="mdc-text-field__affix mdc-text-field__affix--prefix">{{ prefix }}</span>
+                {% endif %}
                 <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+                {% if suffix is not same as(false) %}
+                    <span class="mdc-text-field__affix mdc-text-field__affix--suffix">{{ suffix }}</span>
+                {% endif %}
                 {% if trailing_icon %}
                     <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing">{{ trailing_icon }}</i>
                 {% endif %}
