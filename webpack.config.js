@@ -9,9 +9,11 @@ Encore
 
     .cleanupOutputBeforeBuild()
     .enableSassLoader(function (options) {
-        options.includePaths = glob.sync(
+        options.sassOptions.includePaths = glob.sync(
             path.join(__dirname, '**/node_modules/@material')
-        ).map((dir) => path.dirname(dir))
+        ).map((dir) => path.dirname(dir));
+
+        options.implementation = require('sass');
     })
     .enableSourceMaps(false)
     .enableVersioning(false)
