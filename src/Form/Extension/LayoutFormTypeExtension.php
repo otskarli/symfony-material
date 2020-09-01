@@ -21,7 +21,7 @@ class LayoutFormTypeExtension extends AbstractTypeExtension
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
         $view->vars = array_replace($view->vars, array(
-            'filled' => !$options['outlined'],
+            'outlined' => $options['outlined'],
             'leading_icon' => $options['leading_icon'],
             'trailing_icon' => $options['trailing_icon'],
             'character_count' => $options['character_count']
