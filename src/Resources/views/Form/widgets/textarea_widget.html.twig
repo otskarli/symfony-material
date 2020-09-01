@@ -17,12 +17,6 @@
         }) %}
 
         <div{% with {attr: row_attr} %}{{ block('attributes') }}{% endwith %}>
-            {% if leading_icon %}
-                <i class="material-icons mdc-text-field__icon">{{ leading_icon }}</i>
-            {% endif %}
-            {% if trailing_icon %}
-                <i class="material-icons mdc-text-field__icon">{{ trailing_icon }}</i>
-            {% endif %}
             <span class="mdc-text-field__ripple"></span>
             <textarea {{ block('widget_attributes') }}>{{ value }}</textarea>
 
