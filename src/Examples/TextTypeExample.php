@@ -128,7 +128,7 @@ class TextTypeExample extends AbstractType
                 ],
                 'help' => 'asd'
             ])
-            ->add('leadingTrailingIconCharCount74', TextType::class, [
+            ->add('leadingTrailingIconCharCountPrefixSuffix74', TextType::class, [
                 'label' => 'Filled input with leading and trailing icon and character count and help text and prefix and suffix',
                 'trailing_icon' => 'visibility',
                 'leading_icon' => 'visibility',
