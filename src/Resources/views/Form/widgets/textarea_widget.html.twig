@@ -1,0 +1,60 @@
+{%- block textarea_widget -%}
+    {%- set attr = { class: 'mdc-text-field__input' }|merge(attr) -%}
+    {%- set type = type|default('text') -%}
+    {%- if type == 'range' or type == 'color' -%}
+        {%- set required = false -%}
+    {%- endif -%}
+
+    <div class="mdc-form-group">
+        {% set row_attr = row_attr|merge({
+            class: 'mdc-text-field mdc-text-field--filled mdc-text-field--textarea'
+            ~ (outlined is same as(true) ? ' mdc-text-field--outlined' : '')
+            ~ (errors|length > 0 ? ' mdc-text-field--invalid' : '')
+            ~ (leading_icon ? ' mdc-text-field--with-leading-icon' : '')
+            ~ (trailing_icon ? ' mdc-text-field--with-trailing-icon' : '')
+            ~ (label is same as(false) ? ' mdc-text-field--no-label' : '')
+            ~ (disabled is same as(true) ? ' mdc-text-field--disabled' : '')
+        }) %}
+
+        <div{% with {attr: row_attr} %}{{ block('attributes') }}{% endwith %}>
+            {% if leading_icon %}
+                <i class="material-icons mdc-text-field__icon">{{ leading_icon }}</i>
+            {% endif %}
+            {% if trailing_icon %}
+                <i class="material-icons mdc-text-field__icon">{{ trailing_icon }}</i>
+            {% endif %}
+            <span class="mdc-text-field__ripple"></span>
+            <textarea {{ block('widget_attributes') }}>{{ value }}</textarea>
+            <span class="mdc-line-ripple"></span>
+
+            {% if outlined is same as(false) %}
+                <div class="mdc-line-ripple"></div>
+                {{- form_label(form, null, {label_attr:{class: 'mdc-floating-label'}}) -}}
+            {% else %}
+                <div class="mdc-notched-outline">
+                    <div class="mdc-notched-outline__leading"></div>
+                    <div class="mdc-notched-outline__notch">
+                        {{- form_label(form, null, {label_attr:{class: 'mdc-floating-label'}}) -}}
+                    </div>
+                    <div class="mdc-notched-outline__trailing"></div>
+                </div>
+            {% endif %}
+        </div>
+
+        {% if errors|length > 0 or character_count or help %}
+            <div class="mdc-text-field-helper-line">
+                {% if errors|length > 0 %}
+                    <div class="mdc-text-field-helper-text mdc-text-field-helper-text--persistent mdc-text-field-helper-text--validation-msg" role="alert">
+                        {{ errors[0].message }}
+                    </div>
+                {% else %}
+                    {{- form_help(form) -}}
+                {% endif %}
+
+                {% if character_count %}
+                    <div class="mdc-text-field-character-counter"></div>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+{%- endblock textarea_widget -%}

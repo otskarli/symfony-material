@@ -12,7 +12,7 @@
             {% set row_attr = row_attr|merge({
                 class: 'mdc-text-field '
                     ~ (outlined is same as(true) ? ' mdc-text-field--outlined' : '')
-                    ~ (errors|length > 0 ? 'mdc-text-field--invalid' : '')
+                    ~ (errors|length > 0 ? ' mdc-text-field--invalid' : '')
                     ~ (leading_icon ? ' mdc-text-field--with-leading-icon' : '')
                     ~ (trailing_icon ? ' mdc-text-field--with-trailing-icon' : '')
                     ~ (label is same as(false) ? ' mdc-text-field--no-label' : '')

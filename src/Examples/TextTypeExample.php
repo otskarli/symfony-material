@@ -6,6 +6,11 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
+/**
+ * Class TextTypeExample
+ * @package KarliOts\SymfonyMaterialBundle\Examples
+ * @author karli92ots@hotmail.com
+ */
 class TextTypeExample extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -122,7 +127,6 @@ class TextTypeExample extends AbstractType
                     'maxLength' => 55,
                 ],
                 'help' => 'asd'
-            ])
-        ;
+            ]);
     }
 }
