@@ -106,20 +106,20 @@ class TextTypeExample extends AbstractType
                 'help' => 'Will be filled',
             ])
             ->add('leadingIcon71', TextType::class, [
-                'label' => 'Filled input with leading icon',
+                'label' => 'Outlined input with leading icon',
                 'leading_icon' => 'visibility',
             ])
             ->add('trailingIcon72', TextType::class, [
-                'label' => 'Filled input with leading icon',
+                'label' => 'Outlined input with leading icon',
                 'trailing_icon' => 'visibility',
             ])
             ->add('leadingTrailingIcon73', TextType::class, [
-                'label' => 'Filled input with leading and trailing icon',
+                'label' => 'Outlined input with leading and trailing icon',
                 'trailing_icon' => 'visibility',
                 'leading_icon' => 'visibility',
             ])
             ->add('leadingTrailingIconCharCount74', TextType::class, [
-                'label' => 'Filled input with leading and trailing icon and character count and help text',
+                'label' => 'Outlined input with leading and trailing icon and character count and help text',
                 'trailing_icon' => 'visibility',
                 'leading_icon' => 'visibility',
                 'character_count' => true,
@@ -129,7 +129,7 @@ class TextTypeExample extends AbstractType
                 'help' => 'asd'
             ])
             ->add('leadingTrailingIconCharCountPrefixSuffix74', TextType::class, [
-                'label' => 'Filled input with leading and trailing icon and character count and help text and prefix and suffix',
+                'label' => 'Outlined input with leading and trailing icon and character count and help text and prefix and suffix',
                 'trailing_icon' => 'visibility',
                 'leading_icon' => 'visibility',
                 'character_count' => true,
