@@ -24,7 +24,7 @@ class MaterialDesign {
     static init (context = document) {
         MaterialDesign.initFormComponents(context);
 
-        if (document.getElementsByClassName('mdc-top-app-bar').length > 0) {
+        if (document.getElementsByClassName('mdc-top-app-bar').length > 0 && document.getElementsByClassName('mdc-drawer').length > 0) {
             const topAppBar = MDCTopAppBar.attachTo(context.querySelector('.mdc-top-app-bar'));
             const drawer = MDCDrawer.attachTo(context.querySelector('.mdc-drawer'))
                 topAppBar.setScrollTarget(context.getElementById('main-content'));
