@@ -24,16 +24,20 @@ class MaterialDesign {
     static init (context = document) {
         MaterialDesign.initFormComponents(context);
 
-        const topAppBar = MDCTopAppBar.attachTo(context.querySelector('.mdc-top-app-bar'));
-        const drawer = MDCDrawer.attachTo(context.querySelector('.mdc-drawer'))
-            topAppBar.setScrollTarget(context.getElementById('main-content'));
-            topAppBar.listen('MDCTopAppBar:nav', () => {
-                drawer.open = !drawer.open;
-            });
+        if (document.getElementsByClassName('mdc-top-app-bar').length > 0) {
+            const topAppBar = MDCTopAppBar.attachTo(context.querySelector('.mdc-top-app-bar'));
+            const drawer = MDCDrawer.attachTo(context.querySelector('.mdc-drawer'))
+                topAppBar.setScrollTarget(context.getElementById('main-content'));
+                topAppBar.listen('MDCTopAppBar:nav', () => {
+                    drawer.open = !drawer.open;
+                });
+        }
 
-        [].forEach.call(context.querySelectorAll('.mdc-tab-bar'), function(EL) {
-            MDCTabBar.attachTo(EL);
-        });
+        if (document.getElementsByClassName('mdc-tab-bar').length > 0) {
+            [].forEach.call(context.querySelectorAll('.mdc-tab-bar'), function(EL) {
+                MDCTabBar.attachTo(EL);
+            });
+        }
     }
 
     static initFormComponents (context) {
